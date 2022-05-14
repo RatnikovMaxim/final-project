@@ -1,0 +1,83 @@
+### Получение всех не удаленных пользователей только Админом
+GET http://localhost:8080/users.getAll?limit=50&offset=0
+X-Login: admin
+X-Password: secret
+
+### Получение пользователя только по своему id (Анониму запрещено)
+GET http://localhost:8080/users.getById?id=1
+X-Login: IvanovA.A
+X-Password: secret
+
+### Регистрация пользователя только Админом
+GET http://localhost:8080/users.register?login=SidorovB.B&password=secret
+X-Login: admin
+X-Password: secret
+
+### Получение информации о себе Anonymous
+GET  http://localhost:8080/users.me
+
+### Только Админ может удалить любого пользователя
+GET http://localhost:8080/users.removeById?id=4
+X-Login: admin
+X-Password: secret
+
+### Только Админ восстановить кого угодно
+GET http://localhost:8080/users.restoreById?id=4
+X-Login: admin
+X-Password: secret
+
+
+
+### Получение любым пользователем всех не удаленных ЗапЧастей
+GET http://localhost:8080/parts.getAll?limit=50&offset=0
+
+### Получение любым пользователем ЗапЧастей по id
+GET http://localhost:8080/parts.getById?id=3
+
+### Создание ЗапЧастей не Анонимом
+GET http://localhost:8080/parts.create?name=varnish ALPA&description=acrylic urethane semi-gloss 5L&quantity=10&image=varnish_ALPA.png
+X-Login: SidorovB.B
+X-Password: secret
+
+### Обновление ЗапЧастей не Анонимом
+GET http://localhost:8080/parts.update?id=2&name=knitted gloves&description=latex coated&quantity=100&image=knitted.png
+X-Login: IvanovA.A
+X-Password: secret
+
+### Изменение количества конкретной ЗапЧасти не Анонимом(вводится новое количество)
+GET http://localhost:8080/parts.change?id=3&quantity=51
+X-Login: PetrovA.A
+X-Password: secret
+
+### Удаление ЗапЧастей Админом или Пользователем
+GET http://localhost:8080/parts.removeById?id=1
+X-Login: PetrovA.A
+X-Password: secret
+
+### Восстановление ЗапЧастей Пользователем или Админом
+GET http://localhost:8080/parts.restoreById?id=1
+X-Login: PetrovA.A
+X-Password: secret
+
+### Пользователь может смотреть Под своим id удаленные запчасти
+GET http://localhost:8080/parts.getAllRemoved?limit=100&offset=0
+X-Login: PetrovA.A
+X-Password: secret
+
+### Админ может смотреть все удаленные запчасти
+GET http://localhost:8080/parts.getAllRemoved?limit=100&offset=0
+X-Login: admin
+X-Password: secret
+
+
+### Показать всё в History, только для Админа
+GET http://localhost:8080/history.getAll?limit=50&offset=0
+X-Login: admin
+X-Password: secret
+
+
+### http://localhost:8080/a5c1bcc6-663e-4db0-8063-250ebdc5b53e.png
+POST http://localhost:8080/media/upload-data
+Content-Type: image/png
+
+< ./Bearing.png
